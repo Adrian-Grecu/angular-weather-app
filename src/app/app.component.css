@@ -1,9 +1,13 @@
-#widgetRow {
+.widgetRow {
   display: flex;
-  margin: 0 -5px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
-.widget {
-  margin: 0 5px;
+
+#widget {
+  margin: 0 15px;
 }
 
 .btnClass {

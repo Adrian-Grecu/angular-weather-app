@@ -9,14 +9,19 @@ import { AppComponent } from './app.component';
 import { WeatherWidgetMainComponent } from './components/weather-widget-main/weather-widget-main.component';
 import { AddCityDialogComponent } from './components/add-city-dialog/add-city-dialog.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
+import {MatListModule} from "@angular/material/list";
+import { CurrentCityComponent } from './components/current-city/current-city.component';
+import {HttpClientModule} from "@angular/common/http";
+import {CurrentCityService} from "./service/current-city.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherWidgetMainComponent,
-    AddCityDialogComponent
+    AddCityDialogComponent,
+    CurrentCityComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +31,13 @@ import {MatSelectModule} from "@angular/material/select";
     NoopAnimationsModule,
     FormsModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports: [
+    AppComponent,
     AddCityDialogComponent
   ],
   providers: [     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}

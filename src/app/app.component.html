@@ -1,4 +1,9 @@
-<div id="widgetRow">
-<app-weather-widget-main class ="widget"></app-weather-widget-main>
+<div class="widgetRow">
+  <tr *ngFor="let city of cityList">
+    <app-weather-widget-main class ="widget" [city] = city (click)="setCurrentCity(city)"></app-weather-widget-main>
+  </tr>
   <button class="btnClass" (click)="addNew()"><img class="btnImage" src="assets/image/plus_sign_014.jpg"></button>
+</div>
+<div class="detailView">
+  <app-current-city [weatherData]= currentWeather ></app-current-city>
 </div>

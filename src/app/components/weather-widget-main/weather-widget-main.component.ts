@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {WeatherData} from "../../model/weather-data";
+import {Observable} from "rxjs";
+import {CurrentCityService} from "../../service/current-city.service";
+import {tap} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-weather-widget-main',
@@ -7,25 +11,21 @@ import {WeatherData} from "../../model/weather-data";
   styleUrls: ['./weather-widget-main.component.css']
 })
 export class WeatherWidgetMainComponent implements OnInit {
-  defaultCity: string = "Amsterdam"
-  key: string = "64bf5c0c84375d61ead4bd61e49108a5"
-  weatherData: WeatherData;
 
-  constructor() { this.weatherData = this.getWeatherData( this.defaultCity )}
+  key: string = "64bf5c0c84375d61ead4bd61e49108a5"
+  weatherData: WeatherData = new WeatherData('');
+  @Input() city: string = '';
+
+  constructor(private cityService: CurrentCityService) {}
 
   ngOnInit(): void {
-    console.log( this.weatherData );
+    this.getWeatherData( this.city )
   }
-
 
   getWeatherData(cityName: string) : any {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.key}`)
-      .then(response=>response.json())
-      .then(data=>{this.setWeatherData(data);})
-  }
-
-  setWeatherData(data: any) {
-    this.weatherData = new WeatherData( data )
+    this.cityService.getWeatherByCity(cityName).subscribe( weather => {
+        this.weatherData = weather
+      });
   }
 }
 

@@ -1,4 +1,5 @@
-<div id = 'divWeatherMain' *ngIf="weatherData" >
+<ng-container>
+<div id = 'divWeatherMain' *ngIf="weatherData">
   <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
     <i class="fas fa-3x fa-sun sun"></i>
   </div>
@@ -14,3 +15,4 @@
   <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{weatherData.name}}</div>
   <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{weatherData.humidity}}%</div>
 </div>
+</ng-container>
