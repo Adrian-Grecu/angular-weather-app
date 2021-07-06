@@ -1,12 +1,12 @@
 <ng-container>
 <div id = 'divWeatherMain' *ngIf="weatherData">
-  <div *ngIf="weatherData.isDay" class="weatherWidgetRow">
+  <div *ngIf="weatherData.isDay" class="weatherWidgetRow icon">
     <i class="fas fa-3x fa-sun sun"></i>
   </div>
-  <div *ngIf="!weatherData.isDay" class="weatherWidgetRow">
+  <div *ngIf="!weatherData.isDay" class="weatherWidgetRow icon">
     <i class="fas fa-3x fa-moon moon"></i>
   </div>
-  <div class="weatherWidgetRow cloudDiv">
+  <div class="weatherWidgetRow cloudDiv -icon">
     <i class="fas fa-cloud fa-3x cloud"></i>
   </div>
   <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">{{weatherData.tempMax}}°</div>
@@ -14,5 +14,10 @@
   <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{weatherData.tempRealFeel}}°</div>
   <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{weatherData.name}}</div>
   <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{weatherData.humidity}}%</div>
+  <div class="weatherWidgetRow" style="font-size: 12px;">Timezone: {{weatherData.timezone}}</div>
+  <div class="weatherWidgetRow" style="font-size: 12px;">Atmospheric pressure: {{weatherData.pressure}}</div>
+  <div class="weatherWidgetRow" style="font-size: 12px;">Wind speed: {{weatherData.windSpeed}} km/h </div>
+
+
 </div>
 </ng-container>

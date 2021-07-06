@@ -53,6 +53,13 @@ export class CurrentCityService {
     weatherData.tempMin = (data.main.temp_min - 273.15).toFixed(0);
     weatherData.tempMax = (data.main.temp_max - 273.15).toFixed(0);
     weatherData.tempRealFeel = (data.main.feels_like - 273.15).toFixed(0);
+    if (data.timezone > 0 ){
+      weatherData.timezone = `GMT + ${data.timezone/3600}`;
+    } else {
+      weatherData.timezone = `GMT ${data.timezone/3600}`;
+    }
+    weatherData.windSpeed = data.wind.speed;
+    weatherData.pressure = data.main.pressure;
     return weatherData;
   }
 }

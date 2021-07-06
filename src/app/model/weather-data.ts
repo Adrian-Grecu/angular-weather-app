@@ -7,6 +7,9 @@ export class WeatherData {
   tempRealFeel?:string;
   name: string;
   humidity?: string;
+  timezone?: string;
+  windSpeed? : string
+  pressure?: string
 
   constructor(name: string) {
     this.name = name;
